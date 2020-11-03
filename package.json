@@ -1,0 +1,22 @@
+{
+  "name": "edufair-online-prototype",
+  "version": "1.0.0",
+  "description": "Edufair ONLINE prototype",
+  "main": "index.js",
+  "repository": "https://github.com/raisoturu/edufair-online-prototype.git",
+  "author": "raisoturu <anvaqta@student.telkomuniversity.ac.id>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@chakra-ui/core": "^1.0.0-rc.8",
+    "framer-motion": "^2.9.4",
+    "next": "^10.0.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-icons": "^3.11.0"
+  }
+}
