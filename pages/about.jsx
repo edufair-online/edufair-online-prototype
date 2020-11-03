@@ -12,6 +12,11 @@ const about = () => {
       </Head>
       <Box>
         <Heading>Edufair online concept prototype</Heading>
+        <Link href="https://github.com/raisoturu/edufair-online-prototype">
+          Source code https://github.com/raisoturu/edufair-online-prototype
+        </Link>
+        <br />
+        <br />
         Jadi gini gan, gw ada ide tapi gatau mau ngomong sama siapa. Kan
         biasanya SMA ngadain edufair, nah karena korona kan gabisa, gw kepikiran
         gimana kalo ngadain online aja gan.
@@ -64,7 +69,7 @@ const about = () => {
         <br />
         <UnorderedList>
           <ListItem>
-            Gw gatau alumni SMA gw ada yang daftar ke kampus gw apa engga,
+            Gw gatau lulusan SMA gw ada yang daftar ke kampus gw apa engga,
             minimal se daerah lah. Nah kalo ada event kaya gini kita bisa
             tracking dan kontek2an sama maba. (kontekan sama alumni will be
             helpfull soon kalo kalian udah kuliah wkwkwk trust me)
@@ -98,6 +103,7 @@ const about = () => {
         <br />
         <br />
         Kita majukan masyarakat Grobogan agar menjadi lebih baik
+        <br />
       </Box>
     </Main>
   );

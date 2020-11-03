@@ -39,7 +39,18 @@ const Navbar = () => {
           <Link href="/" route fontWeight="bold" color={color}>
             EdU
           </Link>
+
           <Stack direction="row">
+            <Stack
+              spacing={5}
+              direction="row"
+              d={{ base: "none", lg: "flex" }}
+              align="center"
+            >
+              <Link route href="/about" color={color}>
+                About
+              </Link>
+            </Stack>
             <IconButton
               variant="transparent"
               size="sm"

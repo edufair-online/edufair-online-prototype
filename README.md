@@ -24,7 +24,7 @@ please DM me on instagram: @anvaqta if u interested about this project and we ca
 
 ## Motivation
 
-- Gw gatau alumni SMA gw ada yang daftar ke kampus gw apa engga, minimal se daerah lah. Nah kalo ada event kaya gini kita bisa tracking dan kontek2an sama maba. (kontekan sama alumni will be helpfull soon kalo kalian udah kuliah wkwkwk trust me)
+- Gw gatau lulusan SMA gw ada yang daftar ke kampus gw apa engga, minimal se daerah lah. Nah kalo ada event kaya gini kita bisa tracking dan kontek2an sama maba. (kontekan sama alumni will be helpfull soon kalo kalian udah kuliah wkwkwk trust me)
 - MINIM INFORMASI. Dulu jaman SMA gw gatau apa2 tentang kuliah, kampusnya apaaaja, jurusannya apaaaja, dan kuliah kaya gimana. nah harapannya acara ini bisa buat sharing antar Mahasiswa ke Siswa yang lagi bingung nyari kuliah atau bingung daftar dimana.(Memberi pencerahan)
 - TERSEBAR. Jadi tiap sekolah mereka punya acara edufair masing2. Sekolah A punya edufair A, dan sekolah B punya edufair B, jadi peserta dan panitianya itu2 aja, dan kampus yang ikut itu2 aja. Ya, mungkin karena masalah tempat jadi gabisa terlalu gede. Nah, karena acaranya ini online, kan bisa colab tuh, kan sabi. bakal lebih komplit dan mantap2...
 - PANDEMI. Ya karena pandemi gabisa bikin acara rame2, kalo acaranya online kan gausah mikir minjem tempat dll wkwkwk. Nah kalo gini orang luar jawa pun bakal bisa join karena acaranya online bro....
