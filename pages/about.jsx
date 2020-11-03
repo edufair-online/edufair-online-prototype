@@ -62,6 +62,10 @@ const about = () => {
         and we can discuss deeper about this.
         <br />
         <br />
+        Ah, bit introduction from me... nama gw Wisesa, gw Mahasiswa S1
+        Informatika di Universitas Telkom Dulu gw anak osis juga anak
+        pramuka(Dewan Ambalan hehe)
+        <br />
         <Heading as="h2" size="2xl">
           Motivation
         </Heading>
