@@ -1,7 +1,32 @@
-import { Flex, Heading, Image, SimpleGrid, Text } from "@chakra-ui/core";
+import { useState } from "react";
+import {
+  Box,
+  Flex,
+  Heading,
+  Icon,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/core";
 import Head from "next/head";
 import Main from "@/components/Main";
+import { FaSearch, FaTimesCircle } from "react-icons/fa";
+import Fuse from "fuse.js";
+import listKampus from "@/data/listKampus";
+import KampusCard from "@/components/KampusCard";
 export default function Home() {
+  const [query, setQuery] = useState("");
+  const options = {
+    keys: ["name", "address"],
+    threshold: 0.4,
+  };
+  // we use fuse to "fuzzy" search name, description, and location
+  const fuse = new Fuse(listKampus, options);
+  const results = fuse.search(query);
+  const kampus = query ? results.map((kampus) => kampus.item) : listKampus;
   return (
     <Main px={{ base: 2, md: 0 }}>
       <Head>
@@ -9,28 +34,59 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flex flexDirection="column">
-        <Heading
-          textAlign="center"
-          as="h1"
-          fontSize={{ base: "2xl", md: "4xl" }}
-        >
-          Next.js + Chakra-ui ⚡ boilerplate
+        <Heading as="h1" fontSize={{ base: "2xl", md: "4xl" }}>
+          EDUFAIR?
         </Heading>
-        <Text textAlign="center">
-          a personal next.js+chakra-ui bolierplate to kickstart my app
-          development.
+        <Text>Apaan tuh</Text>
+        <Text align="center" mt="4" mb="2">
+          Find your favourite campus
         </Text>
-        <Text textAlign="center" mt="4">
-          Because this page does nothing, here&apos;s a cute cat picture for you
-        </Text>
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 2, md: 8 }}>
-          <Image src="https://placekitten.com/550/300"></Image>
-          <Image src="https://placekitten.com/550/300"></Image>
-          <Image src="https://placekitten.com/550/300"></Image>
-          <Image src="https://placekitten.com/550/300"></Image>
-          <Image src="https://placekitten.com/550/300"></Image>
-          <Image src="https://placekitten.com/550/300"></Image>
-        </SimpleGrid>
+        <InputGroup
+          w={{ base: "full", lg: "300px" }}
+          alignSelf="center"
+          size="sm"
+        >
+          <InputLeftElement>
+            <Icon color="gray.500" as={FaSearch} boxSize={4} />
+          </InputLeftElement>
+          <Input
+            placeholder="e.g. Telkom University or 'Bandung'"
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+            }}
+          />
+          <InputRightElement>
+            {query && (
+              <Icon
+                color="gray.500"
+                as={FaTimesCircle}
+                boxSize={4}
+                onClick={() => setQuery("")}
+              />
+            )}
+          </InputRightElement>
+        </InputGroup>
+        {kampus.length ? (
+          <SimpleGrid
+            mt="4"
+            columns={{ base: 1, md: 3 }}
+            spacing={{ base: 2, md: 4 }}
+          >
+            {kampus.map((data, idx) => {
+              return <KampusCard key={idx} data={data} />;
+            })}
+          </SimpleGrid>
+        ) : (
+          <Box mt="10">
+            <Text fontSize="1.5em" align="center" fontWeight="bold">
+              Kampus yang kamu cari tidak ketemu 😭
+            </Text>
+            <Text align="center">
+              Coba cari menggunakan nama kota, misalnya "Bandung"
+            </Text>
+          </Box>
+        )}
       </Flex>
     </Main>
   );

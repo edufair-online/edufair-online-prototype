@@ -17,13 +17,13 @@ const Navbar = () => {
         px={{ base: 2, md: 0 }}
         h="full"
         m="auto"
-        maxW={[null, null, "2xl", "5xl"]}
+        maxW={[null, null, "2xl", "6xl"]}
         direction="row"
         justifyContent="space-between"
         alignItems="center"
       >
         <Link href="/" route fontWeight="bold" color={color}>
-          Hello
+          EdU
         </Link>
         <IconButton
           size="sm"
