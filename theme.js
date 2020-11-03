@@ -10,16 +10,16 @@ const styles = {
   }),
 };
 
-const components = {
-  Link: {
-    baseStyle: (props) => ({
-      color: mode("blue.400", "blue.300")(props),
-    }),
-  },
-};
+// const components = {
+//   Link: {
+//     baseStyle: (props) => ({
+//       color: mode("blue.400", "blue.300")(props),
+//     }),
+//   },
+// };
 
 const theme = extendTheme({
-  components,
+  // components,
   styles,
 });
 
