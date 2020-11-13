@@ -17,6 +17,8 @@ import {
 } from "@chakra-ui/core";
 import Link from "@/components/Link";
 import { FaSun, FaMoon, FaBars } from "react-icons/fa";
+import { useUser } from "@/utils/auth/useUser";
+import displayName from "@/utils/displayName";
 const Navbar = () => {
   const Icons = useColorModeValue(<FaSun />, <FaMoon />);
   const color = useColorModeValue("gray.800", "white");
@@ -24,6 +26,7 @@ const Navbar = () => {
   const { toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
+  const { user, logout } = useUser();
   return (
     <>
       <Box w="full" mx="10px" height="50px">
@@ -36,9 +39,21 @@ const Navbar = () => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Link href="/" route fontWeight="bold" color={color}>
-            EdU
-          </Link>
+          <Stack direction="row">
+            <Stack
+              spacing={5}
+              direction="row"
+              d={{ base: "none", lg: "flex" }}
+              align="center"
+            >
+              <Link href="/" route fontWeight="bold" color={color}>
+                Home
+              </Link>
+              <Link route href="/about" color={color}>
+                About
+              </Link>
+            </Stack>
+          </Stack>
 
           <Stack direction="row">
             <Stack
@@ -47,9 +62,20 @@ const Navbar = () => {
               d={{ base: "none", lg: "flex" }}
               align="center"
             >
-              <Link route href="/about" color={color}>
-                About
-              </Link>
+              {user ? (
+                <>
+                  <Link route href="#" color={color}>
+                    hi, {displayName(user.displayName)}
+                  </Link>
+                  <Link route href="#" color={color} onClick={logout}>
+                    Logout
+                  </Link>
+                </>
+              ) : (
+                <Link route href="/signIn" color={color} onClick={logout}>
+                  Sign in
+                </Link>
+              )}
             </Stack>
             <IconButton
               variant="transparent"
