@@ -3,7 +3,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "module": "commonjs",
+    "target": "es6"
   },
   "exclude": ["node_modules", "out", ".next", ".vscode"]
 }

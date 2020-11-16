@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/core";
 import Link from "@/components/Link";
 import { FaSun, FaMoon, FaBars } from "react-icons/fa";
-import { useUser } from "@/utils/auth/useUser";
+import { useUser } from "@/utils/useUser";
 import displayName from "@/utils/displayName";
 const Navbar = () => {
   const Icons = useColorModeValue(<FaSun />, <FaMoon />);
