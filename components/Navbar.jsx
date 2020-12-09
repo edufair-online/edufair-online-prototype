@@ -17,8 +17,8 @@ import {
 } from "@chakra-ui/core";
 import Link from "@/components/Link";
 import { FaSun, FaMoon, FaBars } from "react-icons/fa";
-import { useUser } from "@/utils/useUser";
 import displayName from "@/utils/displayName";
+import { useAuth } from "@/utils/AuthContext";
 const Navbar = () => {
   const Icons = useColorModeValue(<FaSun />, <FaMoon />);
   const color = useColorModeValue("gray.800", "white");
@@ -26,7 +26,7 @@ const Navbar = () => {
   const { toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
-  const { user, logout } = useUser();
+  const { user, logout } = useAuth();
   return (
     <>
       <Box w="full" mx="10px" height="50px">
