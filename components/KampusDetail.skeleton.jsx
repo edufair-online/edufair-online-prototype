@@ -1,4 +1,4 @@
-import { Box, Stack, Skeleton } from "@chakra-ui/react";
+import { Box, Stack, Skeleton, SimpleGrid } from "@chakra-ui/react";
 const KampusDetailSkeleton = (props) => {
   return (
     <>
@@ -13,12 +13,12 @@ const KampusDetailSkeleton = (props) => {
           <Skeleton height="16px" />
         </Stack>
       </Stack>
-      <Box w="full" pt="8">
+      <Box pt="8">
         <Skeleton height="20px" w="150px" />
-        <Stack direction="row" mt="4" spacing="6">
-          <Skeleton height="200px" w={1 / 2} />
-          <Skeleton height="200px" w={1 / 2} />
-        </Stack>
+        <SimpleGrid mt="4" spacing="6" columns={{ base: 1, md: 2 }}>
+          <Skeleton height="200px" w="full" />
+          <Skeleton height="200px" w="full" />
+        </SimpleGrid>
       </Box>
     </>
   );

@@ -35,7 +35,7 @@ const kampusDetail = () => {
   return (
     <Main>
       {loading ? (
-        <KampusDetailSkeleton mt="10" />
+        <KampusDetailSkeleton mt="8" />
       ) : (
         <>
           <Box>
@@ -46,11 +46,12 @@ const kampusDetail = () => {
               </Text>
             </Link>
           </Box>
-          <Stack direction="row" mt="4">
+          <Stack direction={{ base: "column", md: "row" }} mt="4">
             <Image
+              alignSelf="center"
               w="150px"
               h="150px"
-              p={2}
+              p={{ md: 2 }}
               src={croppedLogo}
               fallbackSrc={previewImg}
               alt={kampus?.name}
@@ -62,7 +63,9 @@ const kampusDetail = () => {
                   <FaMapMarkerAlt style={{ display: "inline" }} /> {address}
                 </Text>
               </Link>
-              <Text mt="4">{description}</Text>
+              <Text mt="4" textAlign="justify">
+                {description}
+              </Text>
               <Link href={website} color="black">
                 <Button
                   mt="2"
