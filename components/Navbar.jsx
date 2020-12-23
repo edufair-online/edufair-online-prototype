@@ -40,6 +40,15 @@ const Navbar = () => {
           alignItems="center"
         >
           <Stack direction="row">
+            <Link
+              d={{ base: "block", lg: "none" }}
+              href="/"
+              route
+              fontWeight="bold"
+              color={color}
+            >
+              Edufair
+            </Link>
             <Stack
               spacing={5}
               direction="row"
