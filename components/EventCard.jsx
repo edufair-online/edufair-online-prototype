@@ -27,7 +27,6 @@ import {
   PopoverContent,
   PopoverHeader,
   PopoverBody,
-  PopoverFooter,
   PopoverArrow,
   PopoverCloseButton,
 } from "@chakra-ui/react";
@@ -35,7 +34,6 @@ import dayjs from "dayjs";
 import { useEffect } from "react";
 import {
   FaCopy,
-  FaFacebook,
   FaRegCalendarPlus,
   FaShare,
   FaTwitter,
@@ -66,9 +64,16 @@ const EventCard = ({ data, eventId, ...props }) => {
     minute: "numeric",
     // timeZoneName: "short",
   };
-  const href = window.location.href + `/${data.id}`;
+
+  let href = window.location.href;
+  if (eventId) {
+    const regex = /\/([a-zA-Z0-9_-]*[\/]?)$/g;
+    href = href.replace(regex, "");
+  }
+  href = href + `/${data.id}`;
+
   const toast = useToast();
-  const { hasCopied, onCopy } = useClipboard(href);
+  const { onCopy } = useClipboard(href);
   const begin = new Date(beginDate).toLocaleString("id-ID", dateOptions);
   const end = new Date(endDate).toLocaleString("id-ID", dateOptions);
   const color = useColorModeValue("#E2E8F0", "#1A202C");
