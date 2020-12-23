@@ -9,9 +9,12 @@ import {
 } from "@chakra-ui/react";
 import { FaCircle } from "react-icons/fa";
 import { AspectRatio } from "@chakra-ui/react";
+import MotionBox from "./MotionBox";
+import { useRouter } from "next/router";
 //Komponen ini nanti pas diklik redirect ke page detail kampusnya
-const KampusCard = ({ data }) => {
-  const { name, isLive, logo, address } = data;
+const KampusCard = ({ data, ...props }) => {
+  const { name, isLive, logo, address, id } = data;
+  const router = useRouter();
   const color = useColorModeValue("#E2E8F0", "#1A202C");
   console.log(data);
   const croppedLogo = logo.replace(
@@ -22,8 +25,18 @@ const KampusCard = ({ data }) => {
     "/image/upload/",
     "/image/upload/w_5,h_5,c_lpad,b_auto,e_blur:300/"
   );
+  const handleClick = () => {
+    router.push(`/kampus/${id}`);
+  };
   return (
-    <Box border={`1px solid ${color}`}>
+    <MotionBox
+      border={`1px solid ${color}`}
+      cursor="pointer"
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      onClick={handleClick}
+      {...props}
+    >
       <Stack direction="row">
         <AspectRatio w="150px" ratio={1}>
           <Image
@@ -54,7 +67,7 @@ const KampusCard = ({ data }) => {
           </Text>
         </Flex>
       </Stack>
-    </Box>
+    </MotionBox>
   );
 };
 
