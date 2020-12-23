@@ -10,7 +10,7 @@ const useEvent = (kampusId) => {
 
   const getter = async () => {
     // get kampus details
-    const kampus = getKampus(kampusId)
+    const kampus = await getKampus(kampusId)
       .then((data) => {
         setKampus(data);
         return data;
@@ -21,7 +21,7 @@ const useEvent = (kampusId) => {
       });
 
     // get events from this kampus
-    const events = getAllEvent(kampusId)
+    const events = await getAllEvent(kampusId)
       .then((data) => {
         setEvents(data);
         return data;
@@ -36,7 +36,7 @@ const useEvent = (kampusId) => {
 
   useEffect(() => {
     getter();
-  }, []);
+  }, [kampusId]);
 
   return { kampus, events, loading, error, refetch: getter };
 };

@@ -35,20 +35,12 @@ const KampusCard = ({ data, ...props }) => {
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       onClick={handleClick}
+      shadow="sm"
       {...props}
     >
       <Stack direction="row">
         <AspectRatio w="150px" ratio={1}>
-          <Image
-            p={2}
-            src={
-              logo
-                ? croppedLogo
-                : `https://via.placeholder.com/150?text=${name}`
-            }
-            fallbackSrc={previewImg}
-            alt={name}
-          />
+          <Image p={2} src={croppedLogo} fallbackSrc={previewImg} alt={name} />
         </AspectRatio>
         <Flex px="2" py="4" justifyContent="space-between" direction="column">
           <Box>

@@ -5,7 +5,7 @@ import Link from "@/components/Link";
 // CURSED COMPONENT
 const about = () => {
   return (
-    <Main px={{ base: 4, md: 0 }}>
+    <Main>
       <Head>
         <title>ABOUT</title>
         <link rel="icon" href="/favicon.ico" />
