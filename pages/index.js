@@ -9,21 +9,27 @@ import {
   InputLeftElement,
   InputRightElement,
   SimpleGrid,
+  Spinner,
   Text,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import Main from "@/components/Main";
 import { FaSearch, FaTimesCircle } from "react-icons/fa";
 import Fuse from "fuse.js";
-import listKampus from "@/data/listKampus";
+import KampusSkeleton from "@/components/KampusCard.skeleton";
+// import listKampus from "@/data/listKampus";
 import KampusCard from "@/components/KampusCard";
+import { useKampus } from "@/utils/hooks/useKampus";
 export default function Home() {
   const [query, setQuery] = useState("");
   const options = {
     keys: ["name", "address"],
     threshold: 0.4,
   };
+  const { kampus: listKampus, loading } = useKampus();
+
   // we use fuse to "fuzzy" search name, description, and location
+
   const fuse = new Fuse(listKampus, options);
   const results = fuse.search(query);
   const kampus = query ? results.map((kampus) => kampus.item) : listKampus;
@@ -67,25 +73,39 @@ export default function Home() {
             )}
           </InputRightElement>
         </InputGroup>
+
         {kampus.length ? (
           <SimpleGrid
             mt="4"
             columns={{ base: 1, md: 3 }}
             spacing={{ base: 2, md: 4 }}
           >
-            {kampus.map((data, idx) => {
-              return <KampusCard key={idx} data={data} />;
-            })}
+            {loading ? (
+              <>
+                <KampusSkeleton />
+                <KampusSkeleton />
+                <KampusSkeleton />
+                <KampusSkeleton />
+                <KampusSkeleton />
+                <KampusSkeleton />
+              </>
+            ) : (
+              kampus.map((data, idx) => {
+                return <KampusCard key={idx} data={data} />;
+              })
+            )}
           </SimpleGrid>
         ) : (
-          <Box mt="10">
-            <Text fontSize="1.5em" align="center" fontWeight="bold">
-              Kampus yang kamu cari tidak ketemu 😭
-            </Text>
-            <Text align="center">
-              Coba cari menggunakan nama kota, misalnya "Bandung"
-            </Text>
-          </Box>
+          !loading && (
+            <Box mt="10">
+              <Text fontSize="1.5em" align="center" fontWeight="bold">
+                Kampus yang kamu cari tidak ketemu 😭
+              </Text>
+              <Text align="center">
+                Coba cari menggunakan nama kota, misalnya "Bandung"
+              </Text>
+            </Box>
+          )
         )}
       </Flex>
     </Main>
