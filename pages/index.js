@@ -74,7 +74,7 @@ export default function Home() {
           </InputRightElement>
         </InputGroup>
 
-        {kampus.length ? (
+        {kampus.length || loading ? (
           <SimpleGrid
             mt="4"
             columns={{ base: 1, md: 3 }}
