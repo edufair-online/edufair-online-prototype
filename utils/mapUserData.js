@@ -7,7 +7,7 @@ export const mapUserData = async (user) => {
     phoneNumber,
     photoURL,
   } = user;
-  const token = await user.getIdToken(true);
+  const { token, claims } = await user.getIdTokenResult(true);
   return {
     id: uid,
     displayName,
@@ -16,5 +16,6 @@ export const mapUserData = async (user) => {
     photoURL,
     email,
     token,
+    role: claims.role || null,
   };
 };

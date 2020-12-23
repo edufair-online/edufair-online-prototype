@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import firebase from "firebase/app";
+import axios from "axios";
 import "firebase/auth";
 import initFirebase from "./initFirebase";
 import {
@@ -22,13 +23,13 @@ const useUser = () => {
       .signOut()
       .then(() => {
         // Sign-out successful.
-        router.push("/signIn");
+        setUser(false);
+        router.push("/");
       })
       .catch((e) => {
         console.error(e);
       });
   };
-
   useEffect(() => {
     // Firebase updates the id token every hour, this
     // makes sure the react state and the cookie are
@@ -38,11 +39,16 @@ const useUser = () => {
       .onIdTokenChanged(async (user) => {
         if (user) {
           const userData = await mapUserData(user);
-          setUserCookie(userData);
-          setUser(userData);
+          if (userData.role === "admin" || userData.role === "pic") {
+            setUserCookie(userData);
+            setUser(userData);
+          } else {
+            removeUserCookie();
+            setUser(false);
+          }
         } else {
           removeUserCookie();
-          setUser();
+          setUser(false);
         }
       });
 
@@ -51,14 +57,16 @@ const useUser = () => {
       // router.push("/");
       return;
     }
-    setUser(userFromCookie);
 
+    setUser(userFromCookie);
+    axios.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${userFromCookie.token}`;
     return () => {
       cancelAuthListener();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return { user, logout };
 };
 
