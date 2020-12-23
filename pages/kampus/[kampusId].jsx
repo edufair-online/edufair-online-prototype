@@ -38,12 +38,14 @@ const kampusDetail = () => {
         <KampusDetailSkeleton mt="10" />
       ) : (
         <>
-          <Link href="/" route color={linkColor}>
-            <FaChevronLeft style={{ display: "inline" }} />
-            <Text ml="2" d="inline">
-              Back to home
-            </Text>
-          </Link>
+          <Box>
+            <Link href="/" route color={linkColor}>
+              <FaChevronLeft style={{ display: "inline" }} />
+              <Text ml="2" d="inline">
+                Back to home
+              </Text>
+            </Link>
+          </Box>
           <Stack direction="row" mt="4">
             <Image
               w="150px"
