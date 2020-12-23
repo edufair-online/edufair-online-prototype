@@ -16,7 +16,6 @@ const KampusCard = ({ data, ...props }) => {
   const { name, isLive, logo, address, id } = data;
   const router = useRouter();
   const color = useColorModeValue("#E2E8F0", "#1A202C");
-  console.log(data);
   const croppedLogo = logo.replace(
     "/image/upload/",
     "/image/upload/w_150,h_150,c_lpad,b_auto/"

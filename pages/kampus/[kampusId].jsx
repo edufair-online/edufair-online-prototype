@@ -1,3 +1,4 @@
+import EventCard from "@/components/EventCard";
 import KampusDetailSkeleton from "@/components/KampusDetail.skeleton";
 import Link from "@/components/Link";
 import Main from "@/components/Main";
@@ -7,6 +8,7 @@ import {
   Button,
   Heading,
   Image,
+  SimpleGrid,
   Stack,
   Text,
   useColorModeValue,
@@ -81,6 +83,19 @@ const kampusDetail = () => {
           <Heading mt="4" as="h2" fontSize="2xl">
             Events
           </Heading>
+          {events.length ? (
+            <SimpleGrid
+              mt="4"
+              spacing={{ base: 4, md: 6 }}
+              columns={{ base: 1, md: 2 }}
+            >
+              {events.map((data, idx) => (
+                <EventCard data={data} key={idx} />
+              ))}
+            </SimpleGrid>
+          ) : (
+            <Text textAlign="center">Tidak ada event.</Text>
+          )}
         </>
       )}
     </Main>
