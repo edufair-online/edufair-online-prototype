@@ -1,6 +1,6 @@
 import FirebaseAuth from "@/components/FirebaseAuth";
 import Main from "@/components/Main";
-import { Box, Heading, useColorModeValue } from "@chakra-ui/core";
+import { Box, Heading, useColorModeValue } from "@chakra-ui/react";
 import Head from "next/head";
 const Login = () => {
   const color = useColorModeValue("#E2E8F0", "#1A202C");

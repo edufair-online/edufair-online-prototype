@@ -1,5 +1,5 @@
 import Main from "@/components/Main";
-import { Box, Heading, ListItem, UnorderedList } from "@chakra-ui/core";
+import { Box, Heading, ListItem, UnorderedList } from "@chakra-ui/react";
 import Head from "next/head";
 import Link from "@/components/Link";
 // CURSED COMPONENT

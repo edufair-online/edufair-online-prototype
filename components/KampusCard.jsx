@@ -6,7 +6,7 @@ import {
   Stack,
   Text,
   useColorModeValue,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
 import { FaCircle } from "react-icons/fa";
 
 //Komponen ini nanti pas diklik redirect ke page detail kampusnya

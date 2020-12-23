@@ -6,7 +6,7 @@ import {
   useColorMode,
   useColorModeValue,
   useDisclosure,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
 import {
   Drawer,
   DrawerBody,
@@ -14,7 +14,7 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
 import Link from "@/components/Link";
 import { FaSun, FaMoon, FaBars } from "react-icons/fa";
 import displayName from "@/utils/displayName";

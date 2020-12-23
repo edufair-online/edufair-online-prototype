@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import { ChakraProvider, Stack } from "@chakra-ui/core";
+import { ChakraProvider, Stack } from "@chakra-ui/react";
 import Navbar from "../components/Navbar";
 import theme from "theme";
 import "../styles/globals.css";

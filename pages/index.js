@@ -10,7 +10,7 @@ import {
   InputRightElement,
   SimpleGrid,
   Text,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
 import Head from "next/head";
 import Main from "@/components/Main";
 import { FaSearch, FaTimesCircle } from "react-icons/fa";

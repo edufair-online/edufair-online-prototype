@@ -20,11 +20,9 @@ export const useRequireAuth = () => {
   const toast = useToast();
   useEffect(() => {
     if (auth && auth.user === false) {
-      router.push("/");
-    } else if (auth.user !== undefined && auth.user?.role !== "admin") {
       toast({
         title: "Unaothorized.",
-        description: `You don't have permission to access this page.`,
+        description: `You must login first to access this page.`,
         status: "error",
         duration: 3000,
         isClosable: true,
