@@ -22,8 +22,10 @@ import {
 
 const kampusDetail = () => {
   const router = useRouter();
-  const { kampusId } = router.query;
-  const { kampus, events, loading } = useEvent(kampusId);
+  const params = router.query.params || [];
+  const kampusId = params[0];
+  const eventId = params[1];
+  const { kampus, events, loading, error } = useEvent(kampusId);
   const { name, description, address, website } = kampus || {};
   const croppedLogo = kampus?.logo?.replace(
     "/image/upload/",
@@ -34,6 +36,9 @@ const kampusDetail = () => {
     "/image/upload/w_10,h_10,c_lpad,b_auto,e_blur:300/"
   );
   const linkColor = useColorModeValue("gray.700", "gray.500");
+  if (error === "Kampus tidak ditemukan") {
+    router.push("/404");
+  }
   return (
     <Main>
       {loading ? (
@@ -90,7 +95,7 @@ const kampusDetail = () => {
               columns={{ base: 1, md: 2 }}
             >
               {events.map((data, idx) => (
-                <EventCard data={data} key={idx} />
+                <EventCard data={data} key={idx} eventId={eventId} />
               ))}
             </SimpleGrid>
           ) : (

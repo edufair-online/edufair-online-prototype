@@ -35,7 +35,13 @@ const getKampus = async (kampusId) => {
   return await kampusRef
     .doc(kampusId)
     .get()
-    .then((doc) => doc.data());
+    .then((doc) => {
+      if (!doc.exists) {
+        throw "Kampus tidak ditemukan";
+      } else {
+        return doc.data();
+      }
+    });
 };
 
 export { getAllKampus, getKampus };

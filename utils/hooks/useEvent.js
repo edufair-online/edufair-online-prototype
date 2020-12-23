@@ -35,7 +35,7 @@ const useEvent = (kampusId) => {
   };
 
   useEffect(() => {
-    getter();
+    kampusId && getter();
   }, [kampusId]);
 
   return { kampus, events, loading, error, refetch: getter };

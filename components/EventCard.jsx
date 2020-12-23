@@ -17,13 +17,36 @@ import {
   Box,
   SimpleGrid,
   Badge,
+  useClipboard,
+  IconButton,
+  useToast,
+} from "@chakra-ui/react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
 } from "@chakra-ui/react";
 import dayjs from "dayjs";
-import { FaRegCalendarPlus, FaVideo, FaYoutube } from "react-icons/fa";
+import { useEffect } from "react";
+import {
+  FaCopy,
+  FaFacebook,
+  FaRegCalendarPlus,
+  FaShare,
+  FaTwitter,
+  FaVideo,
+  FaWhatsapp,
+  FaYoutube,
+} from "react-icons/fa";
 import Link from "./Link";
 import MotionBox from "./MotionBox";
 
-const EventCard = ({ data, ...props }) => {
+const EventCard = ({ data, eventId, ...props }) => {
   const {
     title,
     url,
@@ -43,6 +66,9 @@ const EventCard = ({ data, ...props }) => {
     minute: "numeric",
     // timeZoneName: "short",
   };
+  const href = window.location.href + `/${data.id}`;
+  const toast = useToast();
+  const { hasCopied, onCopy } = useClipboard(href);
   const begin = new Date(beginDate).toLocaleString("id-ID", dateOptions);
   const end = new Date(endDate).toLocaleString("id-ID", dateOptions);
   const color = useColorModeValue("#E2E8F0", "#1A202C");
@@ -55,13 +81,23 @@ const EventCard = ({ data, ...props }) => {
   )}&dates=${beginTime}/${endTime}&details=${encodeURIComponent(
     description
   )}+JOIN+URL+${encodeURIComponent(url)}`;
+
+  useEffect(() => {
+    if (eventId === data.id) {
+      onOpen();
+      console.log(eventId);
+    }
+  }, []);
   return (
     <MotionBox
       border={`1px solid ${color}`}
       cursor="pointer"
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      onClick={onOpen}
+      onClick={() => {
+        console.log(data.id);
+        onOpen();
+      }}
       shadow="sm"
       {...props}
     >
@@ -97,8 +133,8 @@ const EventCard = ({ data, ...props }) => {
             </Text>
             <SimpleGrid spacing="2" mt="2" columns={{ base: 1, md: 2 }}>
               {speakers.map((data, key) => (
-                <Stack direction="row">
-                  <Avatar name={data.name} key={key} />
+                <Stack direction="row" key={key}>
+                  <Avatar name={data.name} />
                   <Box>
                     <Text fontWeight="500">{data.name}</Text>
                     <Text>{data.title}</Text>
@@ -108,6 +144,16 @@ const EventCard = ({ data, ...props }) => {
             </SimpleGrid>
           </ModalBody>
           <ModalFooter>
+            <Link href={calendarURL}>
+              <Button
+                leftIcon={<FaRegCalendarPlus />}
+                size="sm"
+                colorScheme="blue"
+                mr={3}
+              >
+                Add to calendar
+              </Button>
+            </Link>
             {!recordingURL && (
               <Link href={url}>
                 <Button
@@ -132,15 +178,75 @@ const EventCard = ({ data, ...props }) => {
                 </Button>
               </Link>
             )}
-            <Link href={calendarURL}>
+            {navigator.share ? (
               <Button
-                leftIcon={<FaRegCalendarPlus />}
+                leftIcon={<FaShare />}
                 size="sm"
                 colorScheme="blue"
+                onClick={() => {
+                  navigator.share({
+                    title: "Edufair Online",
+                    text: `Ayo ikutan ${title}`,
+                    url: href,
+                  });
+                }}
               >
-                Add to calendar
+                Share
               </Button>
-            </Link>
+            ) : (
+              <Popover>
+                <PopoverTrigger>
+                  <Button leftIcon={<FaShare />} size="sm" colorScheme="blue">
+                    Share
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverHeader>Share with your friends</PopoverHeader>
+                  <PopoverBody>
+                    <Stack direction="row" justifyContent="center">
+                      <IconButton
+                        aria-label="Copy Link"
+                        icon={<FaCopy />}
+                        onClick={() => {
+                          onCopy();
+                          toast({
+                            title: "Copied to clipboard.",
+                            status: "success",
+                            duration: 2000,
+                            isClosable: true,
+                          });
+                        }}
+                      />
+                      <Link
+                        href={`https://twitter.com/intent/tweet?text=Ayo+ikutan+${encodeURIComponent(
+                          title
+                        )}+di+${encodeURIComponent(href)}`}
+                      >
+                        <IconButton
+                          colorScheme="blue"
+                          aria-label="Share twitter"
+                          icon={<FaTwitter />}
+                        />
+                      </Link>
+                      <Link
+                        data-action="share/whatsapp/share"
+                        href={`whatsapp://send?text=Ayo+ikutan+${encodeURIComponent(
+                          title
+                        )}+di+${encodeURIComponent(href)}`}
+                      >
+                        <IconButton
+                          colorScheme="green"
+                          aria-label="Share whatsapp"
+                          icon={<FaWhatsapp />}
+                        />
+                      </Link>
+                    </Stack>
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
+            )}
           </ModalFooter>
         </ModalContent>
       </Modal>
