@@ -109,7 +109,13 @@ const EventCard = ({ data, eventId, ...props }) => {
       <AspectRatio minW="200px" ratio={1}>
         <Image p={2} src={"/Main Content.jpg"} />
       </AspectRatio>
-      <Modal isCentered onClose={onClose} isOpen={isOpen} size="xl">
+      <Modal
+        isCentered
+        onClose={onClose}
+        isOpen={isOpen}
+        size="xl"
+        scrollBehavior="inside"
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{title}</ModalHeader>
