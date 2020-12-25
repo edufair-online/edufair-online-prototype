@@ -36,7 +36,7 @@ const kampusDetail = () => {
     "/image/upload/w_10,h_10,c_lpad,b_auto,e_blur:300/"
   );
   const linkColor = useColorModeValue("gray.700", "gray.500");
-  if (error === "Kampus tidak ditemukan") {
+  if (error === "Kampus tidak ditemukan" || params.length > 2) {
     router.push("/404");
   }
   return (
