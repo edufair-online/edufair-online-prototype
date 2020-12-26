@@ -73,8 +73,11 @@ const Navbar = () => {
             >
               {user ? (
                 <>
-                  <Link route href="#" color={color}>
+                  <Link fontWeight="500" route href="/dashboard" color={color}>
                     hi, {displayName(user.displayName)}
+                  </Link>
+                  <Link route href="/dashboard" color={color}>
+                    Dashboard
                   </Link>
                   <Link route href="#" color={color} onClick={logout}>
                     Logout
@@ -114,6 +117,25 @@ const Navbar = () => {
             <DrawerHeader>Edufair covid edition</DrawerHeader>
             <DrawerBody>
               <Stack>
+                {user && (
+                  <>
+                    <Link
+                      fontWeight="bold"
+                      px="2"
+                      route
+                      href="/dashboard"
+                      color={color}
+                    >
+                      hi, {displayName(user.displayName)}
+                    </Link>
+                    <Link p="2" route href="/dashboard" color={color}>
+                      Dashboard
+                    </Link>
+                    <Link p="2" route href="#" color={color} onClick={logout}>
+                      Logout
+                    </Link>
+                  </>
+                )}
                 <Link p="2" route href="/about" color={color}>
                   About
                 </Link>
