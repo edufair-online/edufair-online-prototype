@@ -1,7 +1,9 @@
 import Main from "@/components/Main";
 import {
   Avatar,
+  Box,
   Button,
+  Divider,
   Flex,
   Heading,
   Input,
@@ -22,12 +24,23 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+} from "@chakra-ui/react";
 import { useRequireAuth } from "@/utils/AuthContext";
 import { FaPencilAlt, FaSave } from "react-icons/fa";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getUserStamps } from "@/utils/helpers/userHelpers";
 const dashboard = () => {
   const { user, updateProfile } = useRequireAuth();
+  const [stamps, setStamps] = useState();
   const { displayName, email, id, photoURL, phoneNumber } = user || {};
   const { handleSubmit, errors, register, formState, reset } = useForm();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -35,6 +48,15 @@ const dashboard = () => {
   const required = (value) => {
     if (!value) return "Can't be empty";
   };
+  const getStamps = async () => {
+    const result = await getUserStamps(id);
+    setStamps(result);
+  };
+  useEffect(() => {
+    if (user) {
+      getStamps();
+    }
+  }, [user]);
   const onSubmit = (values) => {
     console.log(values);
     updateProfile(values)
@@ -71,7 +93,9 @@ const dashboard = () => {
       {user ? (
         <Flex direction="column" alignItems={{ base: "center", md: "start" }}>
           <Avatar size="xl" name={displayName} src={photoURL} />
-          <Heading>Hi, {displayName}</Heading>
+          <Heading textAlign={{ base: "center", md: "left" }}>
+            Hi, {displayName}
+          </Heading>
           <Text mt={0}>
             {email}
             {phoneNumber && ` - ${phoneNumber}`}
@@ -87,6 +111,47 @@ const dashboard = () => {
           >
             Edit profile
           </Button>
+          <Divider my="4" />
+          <Heading fontWeight="500" fontSize="lg">
+            Event yang kamu ikuti
+          </Heading>
+          {stamps ? (
+            <Box w="full" overflow="auto" mt="2">
+              <Table size="sm">
+                <Thead>
+                  <Tr>
+                    <Th isNumeric>No</Th>
+                    <Th>Description</Th>
+                    <Th>Point</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {stamps.length &&
+                    stamps.map((data, idx) => (
+                      <Tr key={idx}>
+                        <Td isNumeric>{idx + 1}</Td>
+                        <Td>{data.description}</Td>
+                        <Td>
+                          {data.point > 0 ? (
+                            <Text fontWeight="600" color="green.600">
+                              + {data.point}
+                            </Text>
+                          ) : (
+                            <Text fontWeight="600" color="red.600">
+                              - {data.point}
+                            </Text>
+                          )}
+                        </Td>
+                      </Tr>
+                    ))}
+                </Tbody>
+              </Table>
+            </Box>
+          ) : stamps !== undefined ? (
+            <Text mt="4">Kamu belum mengikuti event apapun 😢</Text>
+          ) : (
+            <Spinner mt="2" />
+          )}
         </Flex>
       ) : (
         <Spinner />

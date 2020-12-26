@@ -31,4 +31,54 @@ const updateUserData = async (userId, userData) => {
       updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
 };
-export { getUserData, saveUserData, updateUserData };
+const getStampDetail = (stampId) => {
+  return firestore
+    .collection("stamps")
+    .doc(stampId)
+    .get()
+    .then((doc) => {
+      if (doc.exists) return doc.data();
+    });
+};
+//check if user already claims stamps
+const checkStamp = async (userId, stampId) => {
+  return firestore
+    .collection("users")
+    .doc(userId)
+    .collection("stamps")
+    .doc(stampId)
+    .get()
+    .then((doc) => doc.exists);
+};
+
+const claimStamps = async (userId, stampId, stampData) => {
+  return await firestore
+    .collection("users")
+    .doc(userId)
+    .collection("stamps")
+    .doc(stampId)
+    .set(stampData);
+};
+const getUserStamps = async (userId) => {
+  return await firestore
+    .collection("users")
+    .doc(userId)
+    .collection("stamps")
+    .get()
+    .then((snap) => {
+      return snap.empty
+        ? []
+        : snap.docs.map((doc) => {
+            return { ...doc.data(), id: doc.id };
+          });
+    });
+};
+export {
+  getUserData,
+  saveUserData,
+  updateUserData,
+  getStampDetail,
+  checkStamp,
+  claimStamps,
+  getUserStamps,
+};
