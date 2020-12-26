@@ -30,6 +30,12 @@ const useUser = () => {
         console.error(e);
       });
   };
+  const updateProfile = (userData) => {
+    const user = firebase.auth().currentUser;
+    if (user) {
+      return user.updateProfile(userData);
+    }
+  };
   useEffect(() => {
     // Firebase updates the id token every hour, this
     // makes sure the react state and the cookie are
@@ -67,7 +73,7 @@ const useUser = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return { user, logout };
+  return { user, updateProfile, logout };
 };
 
 export { useUser };
