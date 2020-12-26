@@ -7,6 +7,7 @@ import "nprogress/nprogress.css";
 import "../styles/globals.css";
 import { AuthProvider } from "@/utils/AuthContext";
 import Router from "next/router";
+import QRScanner from "@/components/QRScanner";
 
 NProgress.configure({ showSpinner: false });
 Router.events.on("routeChangeStart", () => NProgress.start());
@@ -19,6 +20,7 @@ function MyApp({ Component, pageProps }) {
         <Stack minH="100vh" w="full" alignItems="center">
           <Navbar />
           <Component {...pageProps} />
+          <QRScanner />
           <Footer />
         </Stack>
       </AuthProvider>
