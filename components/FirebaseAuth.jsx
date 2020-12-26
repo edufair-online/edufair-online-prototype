@@ -4,6 +4,7 @@ import "firebase/auth";
 import initFirebase from "@/utils/initFirebase";
 import { setUserCookie } from "@/utils/userCookies";
 import { mapUserData } from "@/utils/mapUserData";
+import { getUserData, saveUserData } from "@/utils/helpers/userHelpers";
 
 // Init the Firebase app.
 initFirebase();
@@ -17,12 +18,26 @@ const firebaseAuthConfig = {
     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
   ],
-  signInSuccessUrl: "/",
+  // signInSuccessUrl: "/",
   credentialHelper: "none",
   callbacks: {
-    signInSuccessWithAuthResult: async ({ user }, redirectUrl) => {
-      const userData = await mapUserData(user);
-      setUserCookie(userData);
+    signInSuccessWithAuthResult: ({ user }) => {
+      const successCallback = async () => {
+        const userData = await mapUserData(user);
+        const userDoc = await getUserData(user.uid);
+        if (!userDoc) {
+          delete userData.token;
+          const data = {
+            ...userData,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+          };
+          saveUserData(user.uid, data);
+        }
+        setUserCookie(userData);
+      };
+      successCallback();
+      return false;
     },
   },
 };

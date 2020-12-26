@@ -11,4 +11,24 @@ const getUserData = async (userId) => {
   }
 };
 
-export { getUserData };
+const saveUserData = async (userId, userData) => {
+  await firestore
+    .collection("users")
+    .doc(userId)
+    .set({
+      ...userData,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+};
+const updateUserData = async (userId, userData) => {
+  await firestore
+    .collection("users")
+    .doc(userId)
+    .update({
+      ...userData,
+      // createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+};
+export { getUserData, saveUserData, updateUserData };

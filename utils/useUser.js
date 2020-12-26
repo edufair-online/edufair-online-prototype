@@ -10,6 +10,7 @@ import {
   getUserFromCookie,
 } from "./userCookies";
 import { mapUserData } from "./mapUserData";
+import { updateUserData } from "./helpers/userHelpers";
 
 initFirebase();
 
@@ -23,8 +24,8 @@ const useUser = () => {
       .signOut()
       .then(() => {
         // Sign-out successful.
+        router.push("/signIn");
         setUser(false);
-        router.push("/");
       })
       .catch((e) => {
         console.error(e);
@@ -33,7 +34,11 @@ const useUser = () => {
   const updateProfile = (userData) => {
     const user = firebase.auth().currentUser;
     if (user) {
-      return user.updateProfile(userData);
+      return user.updateProfile(userData).then(() => {
+        updateUserData(user.uid, userData);
+        const newUserData = mapUserData(user);
+        setUserCookie(newUserData);
+      });
     }
   };
   useEffect(() => {
@@ -45,13 +50,9 @@ const useUser = () => {
       .onIdTokenChanged(async (user) => {
         if (user) {
           const userData = await mapUserData(user);
-          if (userData.role === "admin" || userData.role === "pic") {
-            setUserCookie(userData);
-            setUser(userData);
-          } else {
-            removeUserCookie();
-            setUser(false);
-          }
+
+          setUserCookie(userData);
+          setUser(userData);
         } else {
           removeUserCookie();
           setUser(false);
