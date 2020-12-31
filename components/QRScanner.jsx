@@ -20,6 +20,7 @@ import {
 } from "@/utils/helpers/userHelpers";
 import dynamic from "next/dynamic";
 import { useAuth } from "@/utils/AuthContext";
+import Link from "./Link";
 
 const QrReader = dynamic(() => import("react-qr-reader"), {
   ssr: false,
@@ -132,22 +133,32 @@ const QRScanner = () => {
             <DrawerHeader>Scan QR Code</DrawerHeader>
 
             <DrawerBody minH="50vh">
-              <Box mx="auto" maxW={{ md: "50vh" }}>
-                {isOpen && (
-                  <QrReader
-                    delay={delay}
-                    onError={handleError}
-                    onScan={handleScan}
-                    style={{ width: "100%" }}
-                  />
-                )}
-              </Box>
-
-              <Text>{result === "" ? "Scanning ..." : result}</Text>
-              {loading && (
+              {!user ? (
+                <Link route href="/signIn" onClick={onClose}>
+                  <Button colorScheme="blue" textAlign="center">
+                    You must sign-in first
+                  </Button>
+                </Link>
+              ) : (
                 <>
-                  <Text>Processing</Text>
-                  <Spinner />
+                  {" "}
+                  <Box mx="auto" maxW={{ md: "50vh" }}>
+                    {isOpen && (
+                      <QrReader
+                        delay={delay}
+                        onError={handleError}
+                        onScan={handleScan}
+                        style={{ width: "100%" }}
+                      />
+                    )}
+                  </Box>
+                  <Text>{result === "" ? "Scanning ..." : result}</Text>
+                  {loading && (
+                    <>
+                      <Text>Processing</Text>
+                      <Spinner />
+                    </>
+                  )}
                 </>
               )}
             </DrawerBody>
