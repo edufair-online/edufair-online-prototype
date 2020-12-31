@@ -133,12 +133,14 @@ const QRScanner = () => {
 
             <DrawerBody minH="50vh">
               <Box mx="auto" maxW={{ md: "50vh" }}>
-                <QrReader
-                  delay={delay}
-                  onError={handleError}
-                  onScan={handleScan}
-                  style={{ width: "100%" }}
-                />
+                {isOpen && (
+                  <QrReader
+                    delay={delay}
+                    onError={handleError}
+                    onScan={handleScan}
+                    style={{ width: "100%" }}
+                  />
+                )}
               </Box>
 
               <Text>{result === "" ? "Scanning ..." : result}</Text>
