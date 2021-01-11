@@ -41,9 +41,9 @@ export default function Home() {
       </Head>
       <Flex flexDirection="column">
         <Heading as="h1" fontSize={{ base: "2xl", md: "4xl" }}>
-          EDUFAIR?
+          EDUFAIR 2021
         </Heading>
-        <Text>Apaan tuh</Text>
+        <Text>"Exploring knowledge and experience in digital era"</Text>
         <Text align="center" mt="4" mb="2">
           Find your favourite campus
         </Text>

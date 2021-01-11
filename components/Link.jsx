@@ -6,11 +6,15 @@ const Link = ({
   isExternal = true,
   linkAs,
   route = false,
+  colorScheme,
   ...props
 }) => {
   const { colorMode } = useColorMode();
   const linkProps = {
-    color: props.color || (colorMode === "dark" ? "blue.300" : "blue.500"),
+    color: colorScheme
+      ? "inherit"
+      : props.color || (colorMode === "dark" ? "blue.300" : "blue.500"),
+    colorScheme,
     children,
     ...props,
   };

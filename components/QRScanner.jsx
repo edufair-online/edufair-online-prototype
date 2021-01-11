@@ -32,6 +32,7 @@ const QRScanner = () => {
   const [result, setResult] = useState("");
   const [delay, setDelay] = useState(500);
   const [loading, setLoading] = useState(false);
+  const [isBottom, setIsBottom] = useState(false);
   const toast = useToast();
   const resetScan = (delay = 0) => {
     setTimeout(() => {
@@ -105,6 +106,21 @@ const QRScanner = () => {
   const handleError = (err) => {
     console.error(err);
   };
+  const listener = (e) => {
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+
+    const scrolled = winScroll / height;
+    if (scrolled > 0.9) {
+      setIsBottom(true);
+    } else {
+      setIsBottom(false);
+    }
+  };
   useEffect(() => {
     return () => {
       setResult("");
@@ -112,10 +128,19 @@ const QRScanner = () => {
       setLoading(false);
     };
   }, [isOpen]);
-
+  useEffect(() => {
+    window.addEventListener("scroll", listener);
+    return () => {
+      window.removeEventListener("scroll", listener);
+    };
+  });
   return (
     <>
       <IconButton
+        display={{
+          base: isBottom ? "none" : "inline-flex",
+          md: "inline-flex",
+        }}
         colorScheme="blue"
         icon={<FaQrcode />}
         width="52px"
