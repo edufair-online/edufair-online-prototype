@@ -34,7 +34,7 @@ export default function Home() {
   const results = fuse.search(query);
   const kampus = query ? results.map((kampus) => kampus.item) : listKampus;
   return (
-    <Main pb="6" minH="80vh">
+    <Main pb="6">
       <Head>
         <title>Next.js + chakra-ui boilerplate</title>
         <link rel="icon" href="/favicon.ico" />
