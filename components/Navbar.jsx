@@ -58,6 +58,9 @@ const Navbar = () => {
               <Link href="/" route fontWeight="bold" color={color}>
                 Home
               </Link>
+              <Link route href="/sponsorship" color={color}>
+                Sponsorship
+              </Link>
               <Link route href="/about" color={color}>
                 About
               </Link>
@@ -136,6 +139,9 @@ const Navbar = () => {
                     </Link>
                   </>
                 )}
+                <Link p="2" route href="/sponsorship" color={color}>
+                  Sponsorship
+                </Link>
                 <Link p="2" route href="/about" color={color}>
                   About
                 </Link>
