@@ -160,7 +160,7 @@ const Footer = () => {
         </Flex>
       </Flex>
       <HStack alignItems="start">
-        <Flex direction="column" mr="6">
+        <Flex direction="column" mr="6" minW="120px">
           <Text fontWeight="bold" mb="2">
             Navigasi
           </Text>
