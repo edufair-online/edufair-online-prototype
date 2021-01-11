@@ -47,7 +47,7 @@ const Footer = () => {
   return (
     <Flex
       w="full"
-      pt="6"
+      pt="200px"
       pb="10"
       maxW={[null, null, "2xl", "6xl"]}
       px={{ base: 2, md: 0 }}
