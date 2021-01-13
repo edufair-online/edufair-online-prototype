@@ -29,3 +29,7 @@ div#__next > div {
   -webkit-user-select: none !important;
   -ms-user-select: none !important;
 }
+/* .notion-header,
+.nav-header {
+  display: none;
+} */

@@ -1,0 +1,30 @@
+diff --git a/node_modules/react-notion-x/build/esm/block.js b/node_modules/react-notion-x/build/esm/block.js
+index 483a176..e654da8 100644
+--- a/node_modules/react-notion-x/build/esm/block.js
++++ b/node_modules/react-notion-x/build/esm/block.js
+@@ -48,7 +48,7 @@ export var Block = function (props) {
+                     return (React.createElement("div", { className: cs('notion', 'notion-app', darkMode && 'notion-dark', className) },
+                         React.createElement("div", { className: 'notion-cursor-listener' },
+                             React.createElement("div", { className: 'notion-frame' },
+-                                React.createElement(PageHeader, null),
++                                // React.createElement(PageHeader, null),
+                                 React.createElement("div", { className: 'notion-page-scroller' },
+                                     page_cover && (React.createElement(LazyImage, { src: mapImageUrl(page_cover, block), alt: getTextContent(properties === null || properties === void 0 ? void 0 : properties.title), className: 'notion-page-cover', style: {
+                                             objectPosition: "center " + coverPosition + "%"
+diff --git a/node_modules/react-notion-x/build/esm/utils.js b/node_modules/react-notion-x/build/esm/utils.js
+index 77fabb9..dddbbc5 100644
+--- a/node_modules/react-notion-x/build/esm/utils.js
++++ b/node_modules/react-notion-x/build/esm/utils.js
+@@ -62,10 +62,10 @@ export var defaultMapImageUrl = function (url, block) {
+ export var defaultMapPageUrl = function (rootPageId) { return function (pageId) {
+     pageId = (pageId || '').replace(/-/g, '');
+     if (rootPageId && pageId === rootPageId) {
+-        return '/';
++        return '/blog';
+     }
+     else {
+-        return "/" + pageId;
++        return "/blog/" + pageId;
+     }
+ }; };
+ var months = [

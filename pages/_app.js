@@ -3,8 +3,13 @@ import { ChakraProvider, Stack } from "@chakra-ui/react";
 import Navbar from "../components/Navbar";
 import theme from "theme";
 import NProgress from "nprogress";
+import "react-notion-x/src/styles.css";
+import "prismjs/themes/prism-tomorrow.css";
+import "rc-dropdown/assets/index.css";
 import "nprogress/nprogress.css";
 import "../styles/globals.css";
+import "../styles/empty.css";
+
 import { AuthProvider } from "@/utils/AuthContext";
 import Router from "next/router";
 import QRScanner from "@/components/QRScanner";
