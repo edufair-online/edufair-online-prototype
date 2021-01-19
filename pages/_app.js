@@ -16,18 +16,18 @@ Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 function MyApp({ Component, pageProps, router }) {
   return (
-    <ChakraProvider theme={theme}>
-      <AuthProvider>
-        <Stack minH="100vh" w="full" alignItems="center">
-          <Navbar />
-          <AnimatePresence exitBeforeEnter>
+    <AnimatePresence>
+      <ChakraProvider theme={theme}>
+        <AuthProvider>
+          <Stack minH="100vh" w="full" alignItems="center">
+            <Navbar />
             <Component {...pageProps} key={router.route} />
-          </AnimatePresence>
-          <QRScanner />
-          {/* <Footer /> */}
-        </Stack>
-      </AuthProvider>
-    </ChakraProvider>
+            <QRScanner />
+            {/* <Footer /> */}
+          </Stack>
+        </AuthProvider>
+      </ChakraProvider>
+    </AnimatePresence>
   );
 }
 

@@ -24,8 +24,8 @@ const useUser = () => {
       .signOut()
       .then(() => {
         // Sign-out successful.
-        router.push("/signIn");
         setUser(false);
+        router.push("/signIn");
       })
       .catch((e) => {
         console.error(e);

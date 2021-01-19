@@ -16,6 +16,5 @@ export const mapUserData = async (user) => {
     photoURL,
     email,
     token,
-    role: claims.role || null,
   };
 };
