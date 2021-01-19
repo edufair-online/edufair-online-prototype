@@ -8,7 +8,7 @@ const Login = () => {
   const color = useColorModeValue("#E2E8F0", "#1A202C");
   const { user } = useAuth();
   const router = useRouter();
-  if (user) router.push("/dashboard");
+  if (user && user !== false) router.push("/dashboard");
   return (
     <Main px={{ base: 4, md: 0 }} alignItems="center" justifyContent="center">
       <Head>

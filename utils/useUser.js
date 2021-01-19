@@ -15,7 +15,7 @@ import { updateUserData } from "./helpers/userHelpers";
 initFirebase();
 
 const useUser = () => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(false);
   const router = useRouter();
 
   const logout = async () => {
