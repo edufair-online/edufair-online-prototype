@@ -18,7 +18,7 @@ const firebaseAuthConfig = {
     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
   ],
-  // signInSuccessUrl: "/",
+  signInSuccessUrl: "/",
   credentialHelper: "none",
   callbacks: {
     signInSuccessWithAuthResult: ({ user }) => {
@@ -37,7 +37,7 @@ const firebaseAuthConfig = {
         setUserCookie(userData);
       };
       successCallback();
-      return false;
+      // return false;
     },
   },
 };
