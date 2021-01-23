@@ -54,6 +54,7 @@ const EventCard = ({ data, eventId, ...props }) => {
     endDate,
     beginDate,
     recordingURL,
+    img,
   } = data || {};
   const dateOptions = {
     weekday: "long",
@@ -107,7 +108,7 @@ const EventCard = ({ data, eventId, ...props }) => {
       {...props}
     >
       <AspectRatio minW="200px" ratio={1}>
-        <Image p={2} src={"/Main Content.jpg"} />
+        <Image p={2} src={img || "/Main Content.jpg"} />
       </AspectRatio>
       <Modal
         isCentered

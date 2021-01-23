@@ -16,8 +16,8 @@ const KampusDetailSkeleton = (props) => {
       <Box pt="8" mb="300px">
         <Skeleton height="20px" w="150px" />
         <SimpleGrid mt="4" spacing="6" columns={{ base: 1, md: 2 }}>
-          <Skeleton height="200px" w="full" />
-          <Skeleton height="200px" w="full" />
+          <Skeleton height="400px" w="full" />
+          <Skeleton height="400px" w="full" />
         </SimpleGrid>
       </Box>
     </>
