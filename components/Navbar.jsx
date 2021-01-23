@@ -127,7 +127,7 @@ const Navbar = () => {
             <DrawerHeader>Edufair covid edition</DrawerHeader>
             <DrawerBody>
               <Stack>
-                {user && (
+                {user ? (
                   <>
                     <Link
                       fontWeight="bold"
@@ -141,10 +141,17 @@ const Navbar = () => {
                     <Link p="2" route href="/dashboard" color={color}>
                       Dashboard
                     </Link>
-                    <Link p="2" route href="#" color={color} onClick={logout}>
-                      Logout
-                    </Link>
                   </>
+                ) : (
+                  <Link
+                    p="2"
+                    route
+                    href="/signIn"
+                    color={color}
+                    onClick={logout}
+                  >
+                    Sign in
+                  </Link>
                 )}
                 <Link
                   p="2"
@@ -160,6 +167,11 @@ const Navbar = () => {
                 <Link p="2" route href="/about" color={color}>
                   About
                 </Link>
+                {user && (
+                  <Link p="2" route href="#" color={color} onClick={logout}>
+                    Logout
+                  </Link>
+                )}
               </Stack>
             </DrawerBody>
           </DrawerContent>
