@@ -43,7 +43,7 @@ export default function Home() {
           <IconButton
             as={Link}
             isExternal
-            href="https://instagram.com/edufair-online"
+            href="https://instagram.com/edufair_online"
             variant="outline"
             icon={<FaInstagram />}
           />
