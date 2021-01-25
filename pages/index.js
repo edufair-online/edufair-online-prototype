@@ -1,113 +1,74 @@
-import { useState } from "react";
+import Main from "@/components/Main";
 import {
-  Box,
-  Flex,
   Heading,
-  Icon,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-  SimpleGrid,
-  Spinner,
+  HStack,
+  IconButton,
   Text,
+  Link,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import Head from "next/head";
-import Main from "@/components/Main";
-import { FaSearch, FaTimesCircle } from "react-icons/fa";
-import Fuse from "fuse.js";
-import KampusSkeleton from "@/components/KampusCard.skeleton";
-// import listKampus from "@/data/listKampus";
-import KampusCard from "@/components/KampusCard";
-import { useKampus } from "@/utils/hooks/useKampus";
+import config from "site.config.js";
+import { FaDiscord, FaInstagram, FaYoutube } from "react-icons/fa";
+
 export default function Home() {
-  const [query, setQuery] = useState("");
-  const options = {
-    keys: ["name", "address"],
-    threshold: 0.4,
-  };
-  const { kampus: listKampus, loading } = useKampus();
-
-  // we use fuse to "fuzzy" search name, description, and location
-
-  const fuse = new Fuse(listKampus, options);
-  const results = fuse.search(query);
-  const kampus = query ? results.map((kampus) => kampus.item) : listKampus;
+  const stroke = useColorModeValue(
+    "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+    "-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff"
+  );
+  const color = useColorModeValue("white", "black");
   return (
-    <Main pb="6">
+    <>
       <Head>
-        <title>Next.js + chakra-ui boilerplate</title>
+        <title>Edufair online 2021 | Coming Soon</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Flex flexDirection="column">
-        <Heading as="h1" fontSize={{ base: "2xl", md: "4xl" }}>
-          EDUFAIR 2021
-        </Heading>
-        <Text>"Exploring knowledge and experience in digital era"</Text>
-        <Text align="center" mt="4" mb="2">
-          Find your favourite campus
-        </Text>
-        <InputGroup
-          w={{ base: "full", lg: "300px" }}
-          alignSelf="center"
-          size="sm"
-        >
-          <InputLeftElement>
-            <Icon color="gray.500" as={FaSearch} boxSize={4} />
-          </InputLeftElement>
-          <Input
-            placeholder="e.g. Telkom University or 'Bandung'"
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-            }}
-          />
-          <InputRightElement>
-            {query && (
-              <Icon
-                color="gray.500"
-                as={FaTimesCircle}
-                boxSize={4}
-                onClick={() => setQuery("")}
-              />
-            )}
-          </InputRightElement>
-        </InputGroup>
-
-        {kampus.length || loading ? (
-          <SimpleGrid
-            mt="4"
-            columns={{ base: 1, md: 3 }}
-            spacing={{ base: 2, md: 4 }}
+      <Main justifyContent="center" d="flex">
+        <Heading fontSize={{ base: "4em", md: "5em" }}>
+          We're Getting Ready to{" "}
+          <Text
+            d="inline"
+            color={color}
+            textShadow={stroke}
+            whiteSpace="nowrap"
           >
-            {loading ? (
-              <>
-                <KampusSkeleton />
-                <KampusSkeleton />
-                <KampusSkeleton />
-                <KampusSkeleton />
-                <KampusSkeleton />
-                <KampusSkeleton />
-              </>
-            ) : (
-              kampus.map((data, idx) => {
-                return <KampusCard key={idx} data={data} />;
-              })
-            )}
-          </SimpleGrid>
-        ) : (
-          !loading && (
-            <Box mt="10">
-              <Text fontSize="1.5em" align="center" fontWeight="bold">
-                Kampus yang kamu cari tidak ketemu 😭
-              </Text>
-              <Text align="center">
-                Coba cari menggunakan nama kota, misalnya "Bandung"
-              </Text>
-            </Box>
-          )
-        )}
-      </Flex>
-    </Main>
+            Launch in.
+          </Text>
+        </Heading>
+        <Text fontSize={{ base: "1em", md: "1.5em" }}>
+          Our website is under construction, we're working very hard to give you
+          the best experience on our new website.
+        </Text>
+        <HStack>
+          <IconButton
+            as={Link}
+            isExternal
+            href="https://instagram.com/edufair-online"
+            variant="outline"
+            icon={<FaInstagram />}
+          />
+          <IconButton
+            as={Link}
+            isExternal
+            href="https://www.youtube.com/channel/UCt0rriFZO-ZPy802fEKxE7Q"
+            variant="outline"
+            icon={<FaYoutube />}
+          />
+          <IconButton
+            as={Link}
+            isExternal
+            href="https://s.id/edu-discord"
+            variant="outline"
+            icon={<FaDiscord />}
+          />
+        </HStack>
+        <Link
+          fontWeight="500"
+          href={`mailto:${config.email}?Subject=Sponsorship Edufair Online 2021:YourCompanyName`}
+        >
+          Become a sponsor!
+        </Link>
+      </Main>
+    </>
   );
 }

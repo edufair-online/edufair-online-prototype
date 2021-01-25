@@ -1905,7 +1905,7 @@ callsites@^3.0.0:
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-3.1.0.tgz#b3630abd8943432f54b3f0519238e33cd7df2f73"
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
 
-camelcase@5.3.1, camelcase@^5.0.0:
+camelcase@5.3.1:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
@@ -1916,9 +1916,9 @@ camelcase@^6.0.0:
   integrity sha512-c7wVvbw3f37nuobQNtgsgG9POC9qMbNuMQmTCqZv23b6MIz0fcYpBiOlv9gEN/hdLdnZTDQhg6e9Dq5M1vKvfg==
 
 caniuse-lite@^1.0.30001093, caniuse-lite@^1.0.30001113, caniuse-lite@^1.0.30001154:
-  version "1.0.30001173"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001173.tgz#3c47bbe3cd6d7a9eda7f50ac016d158005569f56"
-  integrity sha512-R3aqmjrICdGCTAnSXtNyvWYMK3YtV5jwudbq0T7nN9k4kmE4CBuwPqyJ+KBzepSTh0huivV2gLbSMEzTTmfeYw==
+  version "1.0.30001179"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001179.tgz"
+  integrity sha512-blMmO0QQujuUWZKyVrD1msR4WNDAqb/UPO1Sw2WWsQ7deoM5bJiicKnWJ1Y0NS/aGINSnKPIWBMw5luX+NDUCA==
 
 chalk@2.4.2, chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
@@ -1951,6 +1951,21 @@ chokidar@3.4.3:
     readdirp "~3.5.0"
   optionalDependencies:
     fsevents "~2.1.2"
+
+"chokidar@>=2.0.0 <4.0.0":
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.1.tgz#ee9ce7bbebd2b79f49f304799d5468e31e14e68a"
+  integrity sha512-9+s+Od+W0VJJzawDma/gvBNQqkTiqYTWLuZoyAsivsI4AaWTCzHG06/TMjsf1cYe9Cb97UCEhjz7HvnPk2p/tw==
+  dependencies:
+    anymatch "~3.1.1"
+    braces "~3.0.2"
+    glob-parent "~5.1.0"
+    is-binary-path "~2.1.0"
+    is-glob "~4.0.1"
+    normalize-path "~3.0.0"
+    readdirp "~3.5.0"
+  optionalDependencies:
+    fsevents "~2.3.1"
 
 chokidar@^2.1.8:
   version "2.1.8"
@@ -4173,7 +4188,7 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-next@^10.0.0:
+next@^10.0.5:
   version "10.0.5"
   resolved "https://registry.yarnpkg.com/next/-/next-10.0.5.tgz#8071e0aa1883266c91943aa7c6b73deadb064793"
   integrity sha512-yr7ap2TLugf0aMHz+3JoKFP9CCkFE+k6jCfdUymORhptjLYZbD3YGlTcUC1CRl+b5Phlbl7m/WUIPde0VcguiA==
@@ -4878,12 +4893,10 @@ react-hook-form@^6.13.1:
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.14.0.tgz#d11f81f2d9d2b457806cb425a79954a1eeba1871"
   integrity sha512-yj4aqASmyxFPyDtDLKBae+AazFv5vcC5CEpDlh1+r5k5BTH/J/CTG6q0H5lSinm0B0F6P7oTmXIYB75ZmuQz6g==
 
-react-icons@^3.11.0:
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-3.11.0.tgz#2ca2903dfab8268ca18ebd8cc2e879921ec3b254"
-  integrity sha512-JRgiI/vdF6uyBgyZhVyYJUZAop95Sy4XDe/jmT3R/bKliFWpO/uZBwvSjWEdxwzec7SYbEPNPck0Kff2tUGM2Q==
-  dependencies:
-    camelcase "^5.0.0"
+react-icons@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.1.0.tgz#9ca9bcbf2e3aee8e86e378bb9d465842947bbfc3"
+  integrity sha512-FCXBg1JbbR0vWALXIxmFAfozHdVIJmmwCD81Jk0EKOt7Ax4AdBNcaRkWhR0NaKy9ugJgoY3fFvo0PHpte55pXg==
 
 react-is@16.13.1, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
@@ -5131,6 +5144,13 @@ sass-loader@10.0.5:
     neo-async "^2.6.2"
     schema-utils "^3.0.0"
     semver "^7.3.2"
+
+sass@^1.32.5:
+  version "1.32.5"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.32.5.tgz#2882d22ad5748c05fa9bff6c3b0ffbc4f4b9e1dc"
+  integrity sha512-kU1yJ5zUAmPxr7f3q0YXTAd1oZjSR1g3tYyv+xu0HZSl5JiNOaE987eiz7wCUvbm4I9fGWGU2TgApTtcP4GMNQ==
+  dependencies:
+    chokidar ">=2.0.0 <4.0.0"
 
 scheduler@^0.20.1:
   version "0.20.1"

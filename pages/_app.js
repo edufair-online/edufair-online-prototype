@@ -1,14 +1,13 @@
 import Footer from "@/components/Footer";
-import { ChakraProvider, Stack } from "@chakra-ui/react";
-import Navbar from "../components/Navbar";
+import { ChakraProvider, Flex, Stack } from "@chakra-ui/react";
 import theme from "theme";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import "../styles/globals.css";
 import { AuthProvider } from "@/utils/AuthContext";
 import Router from "next/router";
-import QRScanner from "@/components/QRScanner";
 import { AnimatePresence } from "framer-motion";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 NProgress.configure({ showSpinner: false });
 Router.events.on("routeChangeStart", () => NProgress.start());
@@ -20,10 +19,19 @@ function MyApp({ Component, pageProps, router }) {
       <ChakraProvider theme={theme}>
         <AuthProvider>
           <Stack minH="100vh" w="full" alignItems="center">
-            <Navbar />
+            {/* <Navbar /> */}
+            <Flex
+              maxW={[null, null, "2xl", "6xl"]}
+              pt={4}
+              px={{ base: 2, md: 0 }}
+              w="full"
+              // justifyContent="flex-end"
+            >
+              <ThemeSwitcher />
+            </Flex>
             <Component {...pageProps} key={router.route} />
-            <QRScanner />
-            {/* <Footer /> */}
+            {/* <QRScanner /> */}
+            <Footer />
           </Stack>
         </AuthProvider>
       </ChakraProvider>
