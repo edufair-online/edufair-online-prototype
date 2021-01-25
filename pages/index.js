@@ -1,9 +1,11 @@
 import Main from "@/components/Main";
 import {
+  AspectRatio,
   Box,
   Heading,
   HStack,
   IconButton,
+  Image,
   Text,
   Link,
   useColorModeValue,
@@ -18,6 +20,7 @@ export default function Home() {
     "-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff"
   );
   const color = useColorModeValue("white", "black");
+  const filter = useColorModeValue("invert(0)", "invert(1)");
   return (
     <>
       <Head>
@@ -65,12 +68,30 @@ export default function Home() {
         </HStack>
         <Box>
           <Link
-            mt='2'
+            mt="2"
             fontWeight="500"
             href={`mailto:${config.email}?Subject=Sponsorship Edufair Online 2021:YourCompanyName`}
           >
             Become a sponsor!
           </Link>
+        </Box>
+        <Box
+          position="absolute"
+          w="full"
+          maxW={[null, null, "2xl", "6xl"]}
+          bottom={20}
+          zIndex={-2}
+        >
+          <AspectRatio ratio={{ base: 20 / 20, md: 22 / 5 }}>
+            <Image
+              opacity="40%"
+              filter={filter}
+              objectPosition="10%"
+              w="full"
+              alt="dino"
+              src="https://res.cloudinary.com/wisesa/image/upload/c_crop,h_277,w_890/v1611598414/4ff07986208593.5d9a654e92f36_ipbgg7.gif"
+            />
+          </AspectRatio>
         </Box>
       </Main>
     </>
