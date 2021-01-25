@@ -1,5 +1,6 @@
 import Main from "@/components/Main";
 import {
+  Box,
   Heading,
   HStack,
   IconButton,
@@ -62,12 +63,15 @@ export default function Home() {
             icon={<FaDiscord />}
           />
         </HStack>
-        <Link
-          fontWeight="500"
-          href={`mailto:${config.email}?Subject=Sponsorship Edufair Online 2021:YourCompanyName`}
-        >
-          Become a sponsor!
-        </Link>
+        <Box>
+          <Link
+            mt='2'
+            fontWeight="500"
+            href={`mailto:${config.email}?Subject=Sponsorship Edufair Online 2021:YourCompanyName`}
+          >
+            Become a sponsor!
+          </Link>
+        </Box>
       </Main>
     </>
   );
