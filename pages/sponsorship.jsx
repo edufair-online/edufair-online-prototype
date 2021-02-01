@@ -6,6 +6,10 @@ import { BsArrowLeft } from "react-icons/bs";
 const sponsorship = () => {
   return (
     <Main>
+      <Head>
+        <title>Sponsorship | Edufair online 2021</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Heading textAlign="center">Let's become Edufair 2021 sponsor!</Heading>
       <Box pt="2" minH="75vh">
         <iframe
