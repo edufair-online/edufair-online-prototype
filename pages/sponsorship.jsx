@@ -1,22 +1,25 @@
 import Link from "@/components/Link";
 import Main from "@/components/Main";
-import { Box, Button, Heading, Text } from "@chakra-ui/react";
-import { FaEnvelope } from "react-icons/fa";
+import { Box, Heading } from "@chakra-ui/react";
+import { BsArrowLeft } from "react-icons/bs";
 
 const sponsorship = () => {
-  const email = "hi@edufair-online.com";
-  const subject = "Sponsorship Edufair Online 2021:YourCompanyName";
   return (
     <Main>
-      <Heading>Let's become Edufair 2021 sponsor!</Heading>
-      <Text>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, cumque.
-        Facilis asperiores amet, minus sit nihil nam corporis nulla at? Dolores
-        hic placeat laborum voluptate porro magni itaque officia quod.
-      </Text>
-      <Box pt="2">
-        <Link href={`mailto:${email}?Subject=${subject}`}>
-          <Button leftIcon={<FaEnvelope />}>Send email</Button>
+      <Heading textAlign="center">Let's become Edufair 2021 sponsor!</Heading>
+      <Box pt="2" minH="75vh">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfePkGzFoJN-lS1VutTG-UHpym-E8wxGxyDKpfHCRI0Sc5C8w/viewform?embedded=true"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          width="100%"
+          height="100%"
+        >
+          Loading…
+        </iframe>
+        <Link href="/" route colorScheme="black" p="2">
+          <BsArrowLeft style={{ display: "inline" }} /> Back to home
         </Link>
       </Box>
     </Main>

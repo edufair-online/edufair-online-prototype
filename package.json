@@ -7,7 +7,7 @@
   "author": "raisoturu <anvaqta@student.telkomuniversity.ac.id>",
   "license": "MIT",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 8080",
     "build": "next build",
     "start": "next start"
   },
