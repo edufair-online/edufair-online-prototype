@@ -1,5 +1,6 @@
 import Link from "@/components/Link";
 import Main from "@/components/Main";
+import Head from "next/head";
 import { Box, Heading } from "@chakra-ui/react";
 import { BsArrowLeft } from "react-icons/bs";
 
